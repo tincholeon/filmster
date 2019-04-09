@@ -1,4 +1,4 @@
-# Filmster
+﻿# Filmster
 
 Aplicación utilizada en la cursada 2019 de Ingenieria de Software. UTN-FRLP
 
@@ -22,3 +22,4 @@ Aplicación utilizada en la cursada 2019 de Ingenieria de Software. UTN-FRLP
 ## INTEGRANTES 
 - > Martin Leon
 - > Area Matias Agustin
+- > Ivan Chiabrera
