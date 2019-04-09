@@ -19,7 +19,7 @@ Aplicación utilizada en la cursada 2019 de Ingenieria de Software. UTN-FRLP
 
 `npm start`
 
-## INTEGRANTES 
+## INTEGRANTES- GRUPO 1
 - > Martin Leon
 - > Area Matias Agustin
 - > Ivan Chiabrera
