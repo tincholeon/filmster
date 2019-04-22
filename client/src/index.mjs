@@ -10,14 +10,15 @@ const table = Table('#movies', {
         {
             label: 'Guionistas',
             field: 'writers',
-            render: function (data) { return data.join(', ') }
-        }
+            render: function(data) { return data.join(', ') }
+        },
+        { label: 'Directores', field: 'director' }
     ],
     data: [],
-    onSelectedRow: function (row) {
+    onSelectedRow: function(row) {
         console.log(table.getSelectedRows())
     },
-    onDeselectedRow: function () {
+    onDeselectedRow: function() {
         console.log(table.getSelectedRows())
     }
 })
