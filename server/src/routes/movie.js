@@ -32,4 +32,14 @@ router.put('/:id', function (req, res) {
 	}).catch(_ => res.status(400).send('Error al obtener película'))
 })
 
+router.delete('/:id', function(req, res){
+	MovieModel.delete(req.params.id).then((rta) => {
+		if(rta){
+			res.status(200)
+		}else{
+			res.status(400).send('La película ' + req.params.id + ' no fue encontrada')
+		}
+	}).catch(_ => res.status(400).send('Error al obtener película'))	
+})
+
 module.exports = router

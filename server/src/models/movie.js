@@ -58,12 +58,23 @@ const update = (id, data) => {
 	})	
 }
 
+const eliminar = (id) => Movie.destroy({where: {id : id}})
+							.then(function(deleteRecord){
+								if (deleteRecord === 1){
+									return true
+								} else {
+									return false
+								}
+							})
+
 const MovieModel = {
 	Movie: Movie,
 	getAll: getAll,
 	create: create,
 	get: get,
-	update: update
+	update: update,
+	delete: eliminar
 }
+
 
 module.exports = MovieModel

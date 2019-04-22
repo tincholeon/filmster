@@ -23,4 +23,9 @@ const table = Table('#movies', {
     }
 })
 
+var botonAgregar = document.getElementById("agregar");
+botonAgregar.addEventListener("click",function(){
+                         alert('En desarrollo');
+    });
+
 movieService.getAll().then(table.update)
