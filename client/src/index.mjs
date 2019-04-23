@@ -12,7 +12,7 @@ const table = Table('#movies', {
             field: 'writers',
             render: function(data) { return data.join(', ') }
         },
-        { label: 'Directores', field: 'director' }
+        { label: 'Directores', field: 'directors' }
     ],
     data: [],
     onSelectedRow: function(row) {
