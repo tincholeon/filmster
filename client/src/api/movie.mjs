@@ -33,8 +33,32 @@ function createMovie(m) {
 
 }
 
+function getMovie(id){
+    return fetch('/api/v1/movies/'+id, {method:'GET'})
+      .then(function(res){
+          return res.json();
+      })
+      .then(function(myRes){
+          console.log(myRes);
+          var pelicula = {
+              titulo : myRes.title,
+               descripcion : myRes.description,
+               anio : myRes.year,
+               duracion: myRes.runtime, 
+               pais: myRes.country, 
+               lenguaje: myRes.language,
+               genero: myRes.genres,
+               directores : myRes.directors, 
+               guionistas: myRes.writers
+          }
+          localStorage.setItem('movie', JSON.stringify(pelicula));
+          window.location.assign('./../movie.html');
+      });      
+}     
+
 export default {
     getAll,
     createMovie, 
-    deleteMovie
+    deleteMovie, 
+    getMovie
 }

@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="/styles/checkbox.css">
     <link rel="stylesheet" href="/styles/table.css">
     <link rel="stylesheet" href="/styles/main.css">
+    <script src="/movie.js"></script>
 </head>
 
-<body>
+<body onload="init()">
     <nav class="navbar has-shadow is-spaced" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
@@ -28,40 +29,48 @@
             <div class="columns">
                 <div class="column is-full has-text-centered">
                     <div class="marginBottom">
-                        <span class="title is-1 has-background-black has-text-white border">Título:</span>
+                        <span class="title is-1 has-background-black has-text-white border">Titulo: </span>
+                        <span  id="title"></span>
                     </div>
                     <div class="marginBottom">
-                        <span class="title is-1 has-background-black has-text-white border">Descripción:</span>
+                        <span class="title is-1 has-background-black has-text-white border" >Descripcion:  </span>
+                        <span id="description" ></span>
+                    </div>
+                    <div  class="marginBottom">
+                        <span class="title is-1 has-background-black has-text-white border" >Año: </span>
+                        <span id="year"></span>
                     </div>
                     <div class="marginBottom">
-                        <span class="title is-1 has-background-black has-text-white border">Año:</span>
+                        <span class="title is-1 has-background-black has-text-white border" > Duracion: </span>
+                        <span id="runtime" ></span>
+                    </div>
+                    <div  class="marginBottom">
+                        <span class="title is-1 has-background-black has-text-white border" > País: </span>
+                        <span id="country"></span>
+                    </div>
+                    <div  class="marginBottom">
+                        <span class="title is-1 has-background-black has-text-white border" >Lenguaje: </span>
+                        <span id="language"></span>
+                    </div>
+                    <div  class="marginBottom">
+                        <span class="title is-1 has-background-black has-text-white border" >Genero: </span>
+                        <span id="genre"></span>
+                    </div>
+                    <div  class="marginBottom">
+                        <span class="title is-1 has-background-black has-text-white border" >Directores: </span>
+                        <span id="directors"></span>
                     </div>
                     <div class="marginBottom">
-                        <span class="title is-1 has-background-black has-text-white border">Duración:</span>
-                    </div>
-                    <div class="marginBottom">
-                        <span class="title is-1 has-background-black has-text-white border">País:</span>
-                    </div>
-                    <div class="marginBottom">
-                        <span class="title is-1 has-background-black has-text-white border">Lenguaje:</span>
-                    </div>
-                    <div class="marginBottom">
-                        <span class="title is-1 has-background-black has-text-white border">Género:</span>
-                    </div>
-                    <div class="marginBottom">
-                        <span class="title is-1 has-background-black has-text-white border">Directores:</span>
-                    </div>
-                    <div class="marginBottom">
-                        <span class="title is-1 has-background-black has-text-white border">Guionistas:</span>
+                        <span class="title is-1 has-background-black has-text-white border">Escritores: </span>
+                        <span  id="writers" ></span>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
+    <button class="button is-small is-link" onclick="window.location.assign('index.html')">Volver</button>
 
 
 </body>
-<script src="/index.mjs" type="module"></script>
-
 </html>
