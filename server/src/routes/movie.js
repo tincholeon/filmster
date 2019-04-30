@@ -35,9 +35,9 @@ router.put('/:id', function (req, res) {
 router.delete('/:id', function(req, res){
 	MovieModel.delete(req.params.id).then((rta) => {
 		if(rta){
-			res.status(200)
+			return res.status(200).send('Pelicula eliminada');
 		}else{
-			res.status(400).send('La película ' + req.params.id + ' no fue encontrada')
+			return res.status(400).send('La película ' + req.params.id + ' no fue encontrada')
 		}
 	}).catch(_ => res.status(400).send('Error al obtener película'))	
 })
