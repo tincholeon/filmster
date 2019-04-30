@@ -28,8 +28,8 @@ window.table = Table('#movies', {
 
 //var botonAgregar = document.getElementById("addMovieBtn");
 //botonAgregar.addEventListener("click",function(){
-  //                       alert('En desarrollo');
- //   });
+//                       alert('En desarrollo');
+//   });
 
 
 
@@ -90,12 +90,13 @@ function closeModal() {
 
 function openModalEdit() {
     const moviesToBeDeleted = table.getSelectedRows();
-    if (moviesToBeDeleted.length > 1){
+    if (moviesToBeDeleted.length > 1) {
         alert('Se debera seleccionar una sola pelicula para editar');
-    }else{
+    } else {
         var mov = movieService.getOneMovie(moviesToBeDeleted[0].id);
-        $refs.modalM.classList.add('is-active')
-    }    
+        console.log(mov);
+        $refs.modalM.classList.add('is-active');
+    }
 }
 
 function closeModalEdit() {
@@ -126,13 +127,12 @@ function saveMovie() {
 
 }
 
-function editMovie(){
-}
+function editMovie() {}
 
 function deleteMovie() {
     const moviesToBeDeleted = table.getSelectedRows();
 
-    for(let i = 0; i < moviesToBeDeleted.length; i++){
+    for (let i = 0; i < moviesToBeDeleted.length; i++) {
         movieService.deleteMovie(moviesToBeDeleted[i].id);
     }
 }
