@@ -26,10 +26,12 @@ window.table = Table('#movies', {
     }
 })
 
-var botonAgregar = document.getElementById("addMovieBtn");
-botonAgregar.addEventListener("click",function(){
-                         alert('En desarrollo');
-    });
+//var botonAgregar = document.getElementById("addMovieBtn");
+//botonAgregar.addEventListener("click",function(){
+  //                       alert('En desarrollo');
+ //   });
+
+
 
 // Obtenemos todas las peliculas
 movieService.getAll().then(table.update)
@@ -40,6 +42,7 @@ const $refs = {
     cancelModalBtn: document.querySelector('#cancelModalBtn'),
     saveMovieBtn: document.querySelector('#saveMovieBtn'),
     addMovieBtn: document.querySelector('#addMovieBtn'),
+    deleteMovieBtn: document.querySelector('#deleteMovieBtn'),
     closeModalBtn: document.querySelector('#closeModalBtn'),
 
     modal: document.querySelector('#modal'),
@@ -92,8 +95,17 @@ function saveMovie() {
     console.log(movie)
 }
 
+function deleteMovie() {
+    const moviesToBeDeleted = table.getSelectedRows();
+
+    for(let i = 0; i < moviesToBeDeleted.length; i++){
+        movieService.deleteMovie(moviesToBeDeleted[i].id);
+    }
+}
+
 // Levantamos los listeners de la app
 $refs.addMovieBtn.addEventListener('click', openModal)
 $refs.cancelModalBtn.addEventListener('click', closeModal)
 $refs.closeModalBtn.addEventListener('click', closeModal)
 $refs.saveMovieBtn.addEventListener('click', saveMovie)
+$refs.deleteMovieBtn.addEventListener('click', deleteMovie)

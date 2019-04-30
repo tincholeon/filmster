@@ -82,7 +82,7 @@ const MovieModel = {
 	create: createMovie,
 	get: getMovie,
 	update: updateMovie,
-	delete: eliminar
+	delete: deleteMovie
 }
 
 

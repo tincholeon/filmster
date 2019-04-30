@@ -37,18 +37,18 @@ router.delete('/:id', function (req, res) {
 		if (movie == null) {
 			res.status(404).send('La película ' + req.params.id + ' no fue encontrada')
 		} else
-			res.status(200).send('La película ' + req.params.id + ' fue borrada exitosamente')
+			res.status(200).send('La película ' + req.params.id + 'fue borrada exitosamente')
 	}).catch(_ => res.status(500).send('Error al borrar película'))
 })
 
-router.delete('/:id', function(req, res){
-	MovieModel.delete(req.params.id).then((rta) => {
-		if(rta){
-			return res.status(200).send('Pelicula eliminada');
-		}else{
-			return res.status(400).send('La película ' + req.params.id + ' no fue encontrada')
-		}
-	}).catch(_ => res.status(400).send('Error al obtener película'))	
-})
+//router.delete('/:id', function(req, res){
+//	MovieModel.delete(req.params.id).then((rta) => {
+//		if(rta){
+//			return res.status(200).send('Pelicula eliminada');
+//		}else{
+//			return res.status(400).send('La película ' + req.params.id + ' no fue encontrada')
+//		}
+//	}).catch(_ => res.status(400).send('Error al obtener película'))	
+//})
 
 module.exports = router
