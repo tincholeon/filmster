@@ -4,14 +4,11 @@ function getAll() {
 }
 
 function getOneMovie(id) {
-    fetch(`/api/v1/movies/${id}`).then(response =>
+    return fetch(`/api/v1/movies/${id}`).then(response =>
         response.json().then(data => ({
             data: data,
             status: response.status
-        })).then(res => {
-            console.log(res.data);
-        }));
-
+        })));
 }
 
 function deleteMovie(id) {

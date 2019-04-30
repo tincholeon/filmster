@@ -88,29 +88,46 @@ function closeModal() {
     $refs.modal.classList.remove('is-active')
 }
 
+function parseCSV(val) {
+    return val.split(',').flatMap(v => v.split());
+}
+
+/* Abre el modal de editar*/
+
 function openModalEdit() {
     const moviesToBeDeleted = table.getSelectedRows();
     if (moviesToBeDeleted.length > 1) {
         alert('Se debera seleccionar una sola pelicula para editar');
     } else {
-        var mov = movieService.getOneMovie(moviesToBeDeleted[0].id);
-        console.log(mov);
+        const mov = movieService.getOneMovie(moviesToBeDeleted[0].id);
+        mov.then(function(movie){
+            console.log(movie.data);
+            $refs.movieNameM.value = movie.data.title;
+            $refs.moviePlotM.value = movie.data.description;
+            $refs.movieReleaseDateM.value = movie.data.year;
+            $refs.movieCountryM.value = movie.data.country;
+            $refs.movieRuntimeM.value = movie.data.runtime;
+            $refs.movieLanguageM.value = movie.data.language;
+            $refs.movieGeneresM.value = movie.data.genres;
+            $refs.movieWritersM.value = movie.data.writers;
+            $refs.movieDirectorsM.value = movie.data.directors;
+        });
         $refs.modalM.classList.add('is-active');
     }
 }
+
+/* Cierra el modal de editar*/
 
 function closeModalEdit() {
     $refs.modalM.classList.remove('is-active')
 }
 
-function parseCSV(val) {
-    return val.split(',').flatMap(v => v.split());
-}
-
 /*
  * Guarda una pelicula
  */
+
 function saveMovie() {
+
     const movie = {
         name: $refs.movieName.value,
         plot: $refs.moviePlot.value,
@@ -127,7 +144,9 @@ function saveMovie() {
 
 }
 
-function editMovie() {}
+function editMovie(){
+    
+}
 
 function deleteMovie() {
     const moviesToBeDeleted = table.getSelectedRows();
