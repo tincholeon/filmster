@@ -61,7 +61,17 @@ const $refs = {
     movieLanguage: document.querySelector('#movieLanguage'),
     movieGeneres: document.querySelector('#movieGeneres'),
     movieWriters: document.querySelector('#movieWriters'),
-    movieDirectors: document.querySelector('#movieDirectors')
+    movieDirectors: document.querySelector('#movieDirectors'),
+
+    movieNameM: document.querySelector('#movieNameM'),
+    moviePlotM: document.querySelector('#moviePlotM'),
+    movieReleaseDateM: document.querySelector('#movieReleaseDateM'),
+    movieCountryM: document.querySelector('#movieCountryM'),
+    movieRuntimeM: document.querySelector('#movieRuntimeM'),
+    movieLanguageM: document.querySelector('#movieLanguageM'),
+    movieGeneresM: document.querySelector('#movieGeneresM'),
+    movieWritersM: document.querySelector('#movieWritersM'),
+    movieDirectorsM: document.querySelector('#movieDirectorsM')
 }
 
 /*
@@ -79,7 +89,13 @@ function closeModal() {
 }
 
 function openModalEdit() {
-    $refs.modalM.classList.add('is-active')
+    const moviesToBeDeleted = table.getSelectedRows();
+    if (moviesToBeDeleted.length > 1){
+        alert('Se debera seleccionar una sola pelicula para editar');
+    }else{
+        var mov = movieService.getOneMovie(moviesToBeDeleted[0].id);
+        $refs.modalM.classList.add('is-active')
+    }    
 }
 
 function closeModalEdit() {

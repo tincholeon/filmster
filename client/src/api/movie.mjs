@@ -3,6 +3,11 @@ function getAll() {
         .then(result => result.json())
 }
 
+function getOneMovie(id){
+    return fetch('/api/v1/movies/'+id)
+        .then(movie => movie)
+}
+
 function deleteMovie(id) {
     return fetch('/api/v1/movies/'+id, {method: 'DELETE'})
     .then(function(response) {
@@ -35,6 +40,7 @@ function createMovie(m) {
 
 export default {
     getAll,
+    getOneMovie,
     createMovie, 
     deleteMovie
 }
