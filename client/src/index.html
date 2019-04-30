@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="has-background-light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
 
-    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
 
     <title>Filmster</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.css">
@@ -31,6 +32,7 @@
                         <header class="card-header">
                             <div class="card-header-title">Películas</div>
                             <div class="card-header-actions">
+                                <button class="button is-small is-link">Ver</button>
                                 <button class="button is-small" id="addMovieBtn">Agregar</button>
                                 <button class="button is-small">Editar</button>
                                 <button class="button is-small is-danger" id="deleteMovieBtn">Eliminar</button>
@@ -62,81 +64,63 @@
                     <div class="field">
                         <label class="label">Título</label>
                         <div class="control">
-                            <input class="input" type="text"
-                                placeholder="Star Wars: A new hope"
-                                id="movieName">
+                            <input class="input" type="text" placeholder="Star Wars: A new hope" id="movieName">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Sinopsis</label>
                         <div class="control">
-                            <textarea class="textarea"
-                                placeholder="A long time ago in a galaxy far far away..."
-                                id="moviePlot"></textarea>
+                            <textarea class="textarea" placeholder="A long time ago in a galaxy far far away..." id="moviePlot"></textarea>
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Año</label>
                         <div class="control">
-                            <input class="input" type="date"
-                                placeholder="Text input"
-                                id="movieReleaseDate">
+                            <input class="input" type="date" placeholder="Text input" id="movieReleaseDate">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Pais</label>
                         <div class="control">
-                            <input class="input" type="text"
-                                placeholder="Estados Unidos"
-                                id="movieCountry">
+                            <input class="input" type="text" placeholder="Estados Unidos" id="movieCountry">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Duración</label>
                         <div class="control">
-                            <input class="input" type="number"
-                                placeholder="110"
-                                id="movieRuntime">
+                            <input class="input" type="number" placeholder="110" id="movieRuntime">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Lenguaje</label>
                         <div class="control">
-                            <input class="input" type="text"
-                                placeholder="Ingles"
-                                id="movieLanguage">
+                            <input class="input" type="text" placeholder="Ingles" id="movieLanguage">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Generos</label>
                         <div class="control">
-                            <input class="input" type="text"
-                                placeholder="Ciencia ficción"
-                                id="movieGeneres">
+                            <input class="input" type="text" placeholder="Ciencia ficción" id="movieGeneres">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Guionistas</label>
                         <div class="control">
-                            <input class="input" type="text"
-                                placeholder="George Lucas"
-                                id="movieWriters">
+                            <input class="input" type="text" placeholder="George Lucas" id="movieWriters">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Directores</label>
                         <div class="control">
-                            <input class="input" type="text"
-                                placeholder="George Lucas"
-                                id="movieDirectors">
+                            <input class="input" type="text" placeholder="George Lucas" id="movieDirectors">
                         </div>
                     </div>
                 </form>
@@ -150,4 +134,5 @@
     </div>
 </body>
 <script src="/index.mjs" type="module"></script>
+
 </html>

@@ -28,8 +28,8 @@ window.table = Table('#movies', {
 
 //var botonAgregar = document.getElementById("addMovieBtn");
 //botonAgregar.addEventListener("click",function(){
-  //                       alert('En desarrollo');
- //   });
+//                       alert('En desarrollo');
+//   });
 
 
 
@@ -99,7 +99,7 @@ function saveMovie() {
 function deleteMovie() {
     const moviesToBeDeleted = table.getSelectedRows();
 
-    for(let i = 0; i < moviesToBeDeleted.length; i++){
+    for (let i = 0; i < moviesToBeDeleted.length; i++) {
         movieService.deleteMovie(moviesToBeDeleted[i].id);
     }
 }

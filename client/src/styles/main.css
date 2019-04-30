@@ -7,6 +7,14 @@
     max-height: unset;
 }
 
+.border {
+    border-radius: 15px;
+}
+
+.marginBottom {
+    margin-bottom: 25px;
+}
+
 @media (max-width: 1087px) {
     .navbar-brand .navbar-item img {
         width: 120px;
