@@ -17,19 +17,19 @@ window.table = Table('#movies', {
     ],
     data: [],
     // Esta funcion se ejecuta cuando seleccionamos una pelicula
-    onSelectedRow: function (row) {
+    onSelectedRow: function(row) {
         console.log(table.getSelectedRows())
     },
     // Esta funcion se ejecuta cuando deseleccionamos una pelicula
-    onDeselectedRow: function () {
+    onDeselectedRow: function() {
         console.log(table.getSelectedRows())
     }
 })
 
 var botonAgregar = document.getElementById("addMovieBtn");
-botonAgregar.addEventListener("click",function(){
-                         alert('En desarrollo');
-    });
+botonAgregar.addEventListener("click", function() {
+    alert('En desarrollo');
+});
 
 // Obtenemos todas las peliculas
 movieService.getAll().then(table.update)
@@ -88,8 +88,9 @@ function saveMovie() {
         writers: parseCSV($refs.movieWriters.value),
         directors: parseCSV($refs.movieDirectors.value)
     }
+    movieService.createMovie(movie);
+    location.reload(); //Actualizamos página
 
-    console.log(movie)
 }
 
 // Levantamos los listeners de la app
