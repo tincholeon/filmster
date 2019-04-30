@@ -39,6 +39,11 @@ movieService.getAll().then(table.update)
 // Guardamos todas las referencias a elementos que vamos a
 // necesitar
 const $refs = {
+    editModalBtnModify: document.querySelector('#editMovieBtn'),
+    cancelModalBtnModify: document.querySelector('#closeBtnM'),
+    modifyModalBtnModify: document.querySelector('#modifyMovieBtnM'),
+    closeModalBtnModify: document.querySelector('#cancelBtnM'),
+
     cancelModalBtn: document.querySelector('#cancelModalBtn'),
     saveMovieBtn: document.querySelector('#saveMovieBtn'),
     addMovieBtn: document.querySelector('#addMovieBtn'),
@@ -46,6 +51,7 @@ const $refs = {
     closeModalBtn: document.querySelector('#closeModalBtn'),
 
     modal: document.querySelector('#modal'),
+    modalM: document.querySelector('#modalM'),
 
     movieName: document.querySelector('#movieName'),
     moviePlot: document.querySelector('#moviePlot'),
@@ -72,6 +78,14 @@ function closeModal() {
     $refs.modal.classList.remove('is-active')
 }
 
+function openModalEdit() {
+    $refs.modalM.classList.add('is-active')
+}
+
+function closeModalEdit() {
+    $refs.modalM.classList.remove('is-active')
+}
+
 function parseCSV(val) {
     return val.split(',').flatMap(v => v.split());
 }
@@ -96,6 +110,9 @@ function saveMovie() {
 
 }
 
+function editMovie(){
+}
+
 function deleteMovie() {
     const moviesToBeDeleted = table.getSelectedRows();
 
@@ -110,3 +127,7 @@ $refs.cancelModalBtn.addEventListener('click', closeModal)
 $refs.closeModalBtn.addEventListener('click', closeModal)
 $refs.saveMovieBtn.addEventListener('click', saveMovie)
 $refs.deleteMovieBtn.addEventListener('click', deleteMovie)
+$refs.editModalBtnModify.addEventListener('click', openModalEdit)
+$refs.cancelModalBtnModify.addEventListener('click', closeModalEdit)
+$refs.closeModalBtnModify.addEventListener('click', closeModalEdit)
+$refs.modifyModalBtnModify.addEventListener('click', editMovie)
