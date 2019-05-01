@@ -100,8 +100,12 @@ function saveMovie() {
 function deleteMovie() {
     const moviesToBeDeleted = table.getSelectedRows();
 
-    for (let i = 0; i < moviesToBeDeleted.length; i++) {
-        movieService.deleteMovie(moviesToBeDeleted[i].id);
+    if(moviesToBeDeleted.length == 0){
+         alert('Debe selecionar una pelicula para eliminar!')
+    } else {
+            for (let i = 0; i < moviesToBeDeleted.length; i++) {
+                  movieService.deleteMovie(moviesToBeDeleted[i].id);
+            }
     }
 }
 
