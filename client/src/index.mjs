@@ -96,9 +96,9 @@ function parseCSV(val) {
 
 function openModalEdit() {
     const movieToBeEdit = table.getSelectedRows();
-    if (movieToBeEdit.length > 1) {
-        alert('Se debera seleccionar una sola pelicula para editar');
-    } else {
+    if ((movieToBeEdit.length > 1) || (movieToBeEdit == 0)){
+        alert('Se debera seleccionar una pelicula para editar');
+    }else {
         const mov = movieService.getOneMovie(movieToBeEdit[0].id);
         mov.then(function(movie){
             console.log(movie.data);
@@ -165,7 +165,11 @@ function editMovie(){
         
     }   
 
-    movieService.editMovie(idMovie,movie);
+    if ((movie.year.length==4)&&(movie.year >= 1900)&&(movie.year < 2050)){
+        movieService.editMovie(idMovie,movie);
+    }else{
+        alert('Error, vuelva a intentarlo');
+    }
     location.reload(); 
    
 }

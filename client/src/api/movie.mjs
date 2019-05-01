@@ -27,7 +27,7 @@ function deleteMovie(id) {
 
 function editMovie(id,mo){
 
-    const data = JSON.stringify({ title: mo.name, description: mo.plot, year: mo.year, country: mo.country, runtime: mo.runtime, language: mo.language, generes: mo.generes, writers: mo.writers, directors: mo.directors })
+    const data = JSON.stringify({ title: mo.name, description: mo.plot, year: mo.year, country: mo.country, runtime: mo.runtime, language: mo.language, genres: mo.generes, writers: mo.writers, directors: mo.directors })
     return fetch(`/api/v1/movies/${id}`, {
         method: 'PUT',
         headers: {
@@ -42,7 +42,7 @@ function editMovie(id,mo){
 function createMovie(m) {
     const año = m.year.toString().slice(10, 15);
 
-    const data = JSON.stringify({ title: m.name, description: m.plot, year: año, country: m.country, runtime: m.runtime, language: m.language, generes: m.generes, writers: m.writers, directors: m.directors })
+    const data = JSON.stringify({ title: m.name, description: m.plot, year: año, country: m.country, runtime: m.runtime, language: m.language, genres: m.generes, writers: m.writers, directors: m.directors })
     return fetch('/api/v1/movies', {
         method: 'POST',
         headers: {
