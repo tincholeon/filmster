@@ -92,14 +92,14 @@ function parseCSV(val) {
     return val.split(',').flatMap(v => v.split());
 }
 
-/* Abre el modal de editar*/
+// Abre el modal de editar
 
 function openModalEdit() {
-    const moviesToBeDeleted = table.getSelectedRows();
-    if (moviesToBeDeleted.length > 1) {
+    const movieToBeEdit = table.getSelectedRows();
+    if (movieToBeEdit.length > 1) {
         alert('Se debera seleccionar una sola pelicula para editar');
     } else {
-        const mov = movieService.getOneMovie(moviesToBeDeleted[0].id);
+        const mov = movieService.getOneMovie(movieToBeEdit[0].id);
         mov.then(function(movie){
             console.log(movie.data);
             $refs.movieNameM.value = movie.data.title;
@@ -116,7 +116,7 @@ function openModalEdit() {
     }
 }
 
-/* Cierra el modal de editar*/
+// Cierra el modal de editar
 
 function closeModalEdit() {
     $refs.modalM.classList.remove('is-active')
@@ -144,9 +144,33 @@ function saveMovie() {
 
 }
 
+// Edita una pelicua ya existente
+
 function editMovie(){
+
+    const movieTobeEdit = table.getSelectedRows();
+    var idMovie = movieTobeEdit[0].id;
     
+    const movie = {
+        
+        name: $refs.movieNameM.value,
+        plot: $refs.moviePlotM.value,
+        year: $refs.movieReleaseDateM.value,
+        country: $refs.movieCountryM.value,
+        runtime: $refs.movieRuntimeM.value,
+        language: $refs.movieLanguageM.value,
+        generes: parseCSV($refs.movieGeneresM.value),
+        writers: parseCSV($refs.movieWritersM.value),
+        directors: parseCSV($refs.movieDirectorsM.value)
+        
+    }   
+
+    movieService.editMovie(idMovie,movie);
+    location.reload(); 
+   
 }
+
+// Elimina una pelicula 
 
 function deleteMovie() {
     const moviesToBeDeleted = table.getSelectedRows();

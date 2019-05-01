@@ -25,6 +25,20 @@ function deleteMovie(id) {
         });
 }
 
+function editMovie(id,mo){
+
+    const data = JSON.stringify({ title: mo.name, description: mo.plot, year: mo.year, country: mo.country, runtime: mo.runtime, language: mo.language, generes: mo.generes, writers: mo.writers, directors: mo.directors })
+    return fetch(`/api/v1/movies/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: data
+    })
+
+}
+
 function createMovie(m) {
     const año = m.year.toString().slice(10, 15);
 
@@ -44,5 +58,6 @@ export default {
     getAll,
     getOneMovie,
     createMovie,
+    editMovie,
     deleteMovie
 }
