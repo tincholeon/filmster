@@ -108,9 +108,13 @@ function deleteMovie() {
 function displayMovie(){
     const movieToBeDisplayed = table.getSelectedRows();
     if(movieToBeDisplayed.length == 0){
-         alert('Debe seleccionar una pelicula!')
+        alert('Debe seleccionar una pelicula para ver el detalle!')
     } else {
-    movieService.getMovie(movieToBeDisplayed[0].id);
+        if(movieToBeDisplayed.length > 1){
+             alert('Debe seleccionar solo una pelicula para ampliar el detalle')
+        } else {
+             movieService.getMovie(movieToBeDisplayed[0].id);
+        }
     }
 }
 
