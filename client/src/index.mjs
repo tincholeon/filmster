@@ -48,6 +48,7 @@ const $refs = {
     saveMovieBtn: document.querySelector('#saveMovieBtn'),
     addMovieBtn: document.querySelector('#addMovieBtn'),
     deleteMovieBtn: document.querySelector('#deleteMovieBtn'),
+    displayMovieBtn: document.querySelector('#displayMovieBtn'),
     closeModalBtn: document.querySelector('#closeModalBtn'),
 
     modal: document.querySelector('#modal'),
@@ -179,8 +180,25 @@ function editMovie(){
 function deleteMovie() {
     const moviesToBeDeleted = table.getSelectedRows();
 
-    for (let i = 0; i < moviesToBeDeleted.length; i++) {
-        movieService.deleteMovie(moviesToBeDeleted[i].id);
+    if(moviesToBeDeleted.length == 0){
+         alert('Debe selecionar una pelicula para eliminar!')
+    } else {
+            for (let i = 0; i < moviesToBeDeleted.length; i++) {
+                  movieService.deleteMovie(moviesToBeDeleted[i].id);
+            }
+    }
+}
+
+function displayMovie(){
+    const movieToBeDisplayed = table.getSelectedRows();
+    if(movieToBeDisplayed.length == 0){
+        alert('Debe seleccionar una pelicula para ver el detalle!')
+    } else {
+        if(movieToBeDisplayed.length > 1){
+             alert('Debe seleccionar solo una pelicula para ampliar el detalle')
+        } else {
+             movieService.getMovie(movieToBeDisplayed[0].id);
+        }
     }
 }
 
@@ -194,3 +212,4 @@ $refs.editModalBtnModify.addEventListener('click', openModalEdit)
 $refs.cancelModalBtnModify.addEventListener('click', closeModalEdit)
 $refs.closeModalBtnModify.addEventListener('click', closeModalEdit)
 $refs.modifyModalBtnModify.addEventListener('click', editMovie)
+$refs.displayMovieBtn.addEventListener('click', displayMovie)
