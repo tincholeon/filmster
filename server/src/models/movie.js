@@ -58,6 +58,15 @@ const updateMovie = (id, data) => {
 	})	
 }
 
+const eliminar = (id) => Movie.destroy({where: {id : id}})
+							.then(function(deleteRecord){
+								if (deleteRecord === 1){
+									return true
+								} else {
+									return false
+								}
+							})
+
 const deleteMovie = (id) => {
 	return Movie.findOne({where: {id: id}}).then(movie => {
 		if (movie != null) {
@@ -75,5 +84,6 @@ const MovieModel = {
 	update: updateMovie,
 	delete: deleteMovie
 }
+
 
 module.exports = MovieModel

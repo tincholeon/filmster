@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="has-background-light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+
+    <title>Filmster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.css">
+    <link rel="stylesheet" href="/styles/checkbox.css">
+    <link rel="stylesheet" href="/styles/table.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="/movie.js"></script>
+</head>
+
+<body onload="init()">
+    <nav class="navbar has-shadow is-spaced" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="/assets/filmster.svg">
+            </a>
+        </div>
+    </nav>
+
+    <div class="section">
+        <button class="button is-large is-link" onclick="window.location.assign('index.html')">Volver</button>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-full has-text-centered">
+                    <div class="marginBottom has-background-black border padding">
+                        <span class="title is-1  has-text-white "> <u>Título:</u>  <span  id="title"></span> </span>
+                    </div>
+                    <div class="marginBottom has-background-black border padding">
+                        <span class="title is-1  has-text-white "> <u>Descripción:</u> <span id="description"></span> </span>
+                    </div>
+                    <div class="marginBottom has-background-black border padding">
+                        <span class="title is-1  has-text-white "> <u>Año:</u>  <span id="year"></span></span>
+                    </div>
+                    <div class="marginBottom has-background-black border padding">
+                        <span class="title is-1  has-text-white ">  <u>Duración:</u> <span id="runtime"></span></span>
+                    </div>
+                    <div class="marginBottom has-background-black border padding">
+                        <span class="title is-1  has-text-white ">  <u>País:</u> <span id="country"></span> </span>
+                    </div>
+                    <div class="marginBottom has-background-black border padding">
+                        <span class="title is-1  has-text-white "> <u>Lenguaje:</u> <span id="language"></span></span>
+                    </div>
+                    <div class="marginBottom has-background-black border padding">
+                        <span class="title is-1  has-text-white "> <u>Género:</u> <span id="genre"></span></span>
+                    </div>
+                    <div class="marginBottom has-background-black border padding">
+                        <span class="title is-1  has-text-white "> <u>Directores:</u> <span id="directors"></span></span>
+                    </div>
+                    <div class="marginBottom has-background-black border padding">
+                        <span class="title is-1  has-text-white "> <u>Escritores:</u> <span id="writers"></span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

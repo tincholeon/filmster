@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" class="has-background-light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
 
-    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon"/>
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
 
     <title>Filmster</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.css">
@@ -31,14 +32,15 @@
                         <header class="card-header">
                             <div class="card-header-title">Películas</div>
                             <div class="card-header-actions">
-                                <button class="button is-small" id="addMovieBtn">Agregar</button>
-                                <button class="button is-small">Editar</button>
-                                <button class="button is-small">Eliminar</button>
+                                <button class="button is-small is-link" id="displayMovieBtn">Ver</button>
+                                <button class="button is-small is-success" id="addMovieBtn">Agregar</button>
+                                <button class="button is-small is-warning" id="editMovieBtn">Editar</button>
+                                <button class="button is-small is-danger" id="deleteMovieBtn">Eliminar</button>
                             </div>
                         </header>
 
-                        <div class="card-content">
-                            <div class="content">
+                        <div class="card-content ">
+                            <div class="content table is-striped">
                                 <!-- Tabla de películas -->
                                 <table class="table" id="movies"></table>
                             </div>
@@ -62,81 +64,63 @@
                     <div class="field">
                         <label class="label">Título</label>
                         <div class="control">
-                            <input class="input" type="text"
-                                placeholder="Star Wars: A new hope"
-                                id="movieName">
+                            <input class="input" type="text" placeholder="Star Wars: A new hope" id="movieName">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Sinopsis</label>
                         <div class="control">
-                            <textarea class="textarea"
-                                placeholder="A long time ago in a galaxy far far away..."
-                                id="moviePlot"></textarea>
+                            <textarea class="textarea" placeholder="A long time ago in a galaxy far far away..." id="moviePlot"></textarea>
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Año</label>
                         <div class="control">
-                            <input class="input" type="date"
-                                placeholder="Text input"
-                                id="movieReleaseDate">
+                            <input class="input" type="date" placeholder="Text input" id="movieReleaseDate">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Pais</label>
                         <div class="control">
-                            <input class="input" type="text"
-                                placeholder="Estados Unidos"
-                                id="movieCountry">
+                            <input class="input" type="text" placeholder="Estados Unidos" id="movieCountry">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Duración</label>
                         <div class="control">
-                            <input class="input" type="number"
-                                placeholder="110"
-                                id="movieRuntime">
+                            <input class="input" type="number" placeholder="110" id="movieRuntime">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Lenguaje</label>
                         <div class="control">
-                            <input class="input" type="text"
-                                placeholder="Ingles"
-                                id="movieLanguage">
+                            <input class="input" type="text" placeholder="Ingles" id="movieLanguage">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Generos</label>
                         <div class="control">
-                            <input class="input" type="text"
-                                placeholder="Ciencia ficción"
-                                id="movieGeneres">
+                            <input class="input" type="text" placeholder="Ciencia ficción" id="movieGeneres">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Guionistas</label>
                         <div class="control">
-                            <input class="input" type="text"
-                                placeholder="George Lucas"
-                                id="movieWriters">
+                            <input class="input" type="text" placeholder="George Lucas" id="movieWriters">
                         </div>
                     </div>
 
                     <div class="field">
                         <label class="label">Directores</label>
                         <div class="control">
-                            <input class="input" type="text"
-                                placeholder="George Lucas"
-                                id="movieDirectors">
+                            <input class="input" type="text" placeholder="George Lucas" id="movieDirectors">
                         </div>
                     </div>
                 </form>
@@ -148,6 +132,88 @@
             </footer>
         </div>
     </div>
+    <div class="modal" id="modalM">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Modificar película</p>
+                <button class="delete" aria-label="close" id="closeBtnM">X</button>
+            </header>
+
+            <section class="modal-card-body">
+                <form action="">
+                    <div class="field">
+                        <label class="label">Título</label>
+                        <div class="control">
+                            <input class="input" type="text" id="movieNameM">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Sinopsis</label>
+                        <div class="control">
+                            <textarea class="textarea" id="moviePlotM"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Año</label>
+                        <div class="control">
+                            <input class="input" type="number" id="movieReleaseDateM">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Pais</label>
+                        <div class="control">
+                            <input class="input" type="text" id="movieCountryM">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Duración</label>
+                        <div class="control">
+                            <input class="input" type="number" id="movieRuntimeM">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Lenguaje</label>
+                        <div class="control">
+                            <input class="input" type="text" id="movieLanguageM">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Generos</label>
+                        <div class="control">
+                            <input class="input" type="text" id="movieGeneresM">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Guionistas</label>
+                        <div class="control">
+                            <input class="input" type="text" id="movieWritersM">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Directores</label>
+                        <div class="control">
+                            <input class="input" type="text" id="movieDirectorsM">
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <footer class="modal-card-foot">
+                <button class="button is-success" id="modifyMovieBtnM">Modificar</button>
+                <button class="button" id="cancelBtnM">Cancelar</button>
+            </footer>
+        </div>
+    </div>
 </body>
 <script src="/index.mjs" type="module"></script>
+
 </html>
