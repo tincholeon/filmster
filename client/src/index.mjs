@@ -168,10 +168,10 @@ function editMovie(){
 
     if ((movie.year.length==4)&&(movie.year >= 1900)&&(movie.year < 2050)){
         movieService.editMovie(idMovie,movie);
+        location.reload();
     }else{
-        alert('Error, vuelva a intentarlo');
+        alert('Error, vuelva a intentarlo. El año ingresado no es valido');
     }
-    location.reload(); 
    
 }
 
