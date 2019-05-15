@@ -14,6 +14,12 @@ router.post('/', function(req, res) {
     ).catch(_ => res.status(500).send('Error al crear película'))
 })
 
+router.post('/', function (req, res) {
+	MovieModel.create(req.body).then((data) =>
+		res.status(201).send(data)
+	).catch(_ => res.status(500).send(_))
+})
+
 router.get('/:id', function(req, res) {
     MovieModel.get(req.params.id).then((movie) => {
         if (movie == null) {
