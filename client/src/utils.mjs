@@ -1,4 +1,5 @@
 export function parseCSV(val) {
-    return val.split(',').flatMap(v => v.split());
-}
-
+    let valores = val.split(',');
+    let res = valores.reduce( (x,y) => x.concat([y.replace(/ /g, "")]), [] );
+    return res;   
+ }
