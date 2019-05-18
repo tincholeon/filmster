@@ -46,7 +46,7 @@ test('Debería renderizar la tabla de películas', async () => {
 
 test('Debería renderizar boton agregar', async () => {
     // $ es como querySelector
-    const agregarBtn = await page.$('.card-header-actions button:nth-child(1)');
+    const agregarBtn = await page.$('.card-header-actions button:nth-child(2)');
     // Me fijo que el boton exista
     expect(agregarBtn).not.toBe(null);
     const text = await getText(agregarBtn);
