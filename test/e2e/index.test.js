@@ -52,7 +52,7 @@ test('Debería renderizar boton agregar', async() => {
     // Me fijo que el boton exista
     expect(agregarBtn).not.toBe(null);
     const text = await getText(agregarBtn);
-    expect(text).toBe('Ver');
+    expect(text).toBe('Agregar');
 })
 
 test('La tabla debería iniciar sin datos', async() => {
