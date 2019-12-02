@@ -19,34 +19,34 @@ async function isVisible(element) {
 
 let server, baseURL;
 
-beforeEach(async () => {
+beforeEach(async() => {
     server = await startServer();
     baseURL = `http://localhost:${server.address().port}`
     await page.goto(baseURL);
 })
 
-afterEach(async () => {
+afterEach(async() => {
     server.close();
 })
 
 // ----- TEST ---------
-test('El titulo debería ser Filmster', async () => {
+test('El titulo debería ser Filmster', async() => {
     await expect(page.title()).resolves.toMatch('Filmster');
 })
 
-test('El modal de agregar película debería iniciar oculto', async () => {
+test('El modal de agregar película debería iniciar oculto', async() => {
     const visibility = await isVisible('#modal');
     expect(visibility).toBe(false);
 })
 
-test('Debería renderizar la tabla de películas', async () => {
+test('Debería renderizar la tabla de películas', async() => {
     // $ es como querySelector
 
     const table = await page.$('table#movies');
     expect(table).not.toBe(null);
 })
 
-test('Debería renderizar boton agregar', async () => {
+test('Debería renderizar boton agregar', async() => {
     // $ es como querySelector
     const agregarBtn = await page.$('.card-header-actions button:nth-child(2)');
     // Me fijo que el boton exista
@@ -55,14 +55,14 @@ test('Debería renderizar boton agregar', async () => {
     expect(text).toBe('Agregar');
 })
 
-test('La tabla debería iniciar sin datos', async () => {
+test('La tabla debería iniciar sin datos', async() => {
     // $$ es como querySelectorAll
     const rows = await page.$$('table#movies tbody tr');
 
     expect(rows.length).toBe(0);
 })
 
-test('La tabla debería mostrar los datos cargados en la db', async () => {
+test('La tabla debería mostrar los datos cargados en la db', async() => {
     const movie = {
         title: 'Back to the Future',
         description: 'Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown.',
@@ -78,7 +78,7 @@ test('La tabla debería mostrar los datos cargados en la db', async () => {
     await fetch(`${baseURL}/api/v1/movies`, {
         method: 'POST',
         body: JSON.stringify(movie),
-        headers:{
+        headers: {
             'Content-Type': 'application/json'
         }
     });
@@ -92,7 +92,7 @@ test('La tabla debería mostrar los datos cargados en la db', async () => {
     expect(title).toBe(movie.title);
 })
 
-test('Se debería poder seleccionar una película', async () => {
+test('Se debería poder seleccionar una película', async() => {
     const movie = {
         title: 'Back to the Future',
         description: 'Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown.',
@@ -108,7 +108,7 @@ test('Se debería poder seleccionar una película', async () => {
     await fetch(`${baseURL}/api/v1/movies`, {
         method: 'POST',
         body: JSON.stringify(movie),
-        headers:{
+        headers: {
             'Content-Type': 'application/json'
         }
     });
@@ -125,8 +125,8 @@ test('Se debería poder seleccionar una película', async () => {
 })
 
 
-test('Se debería poder ver el detalle de una película', async () => {
-    
+test('Se debería poder ver el detalle de una película', async() => {
+
     const movie = {
         title: 'Back to the Future',
         description: 'Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown.',
@@ -142,7 +142,7 @@ test('Se debería poder ver el detalle de una película', async () => {
     await fetch(`${baseURL}/api/v1/movies`, {
         method: 'POST',
         body: JSON.stringify(movie),
-        headers:{
+        headers: {
             'Content-Type': 'application/json'
         }
     });
@@ -156,49 +156,49 @@ test('Se debería poder ver el detalle de una película', async () => {
     const selectedRows = await page.evaluate(() => window.table.getSelectedRows());
     expect(selectedRows.length).toBe(1);
 
-    await fetch(`${baseURL}/api/v1/movies/`+selectedRows[0].id, {method:'GET'})
+    await fetch(`${baseURL}/api/v1/movies/` + selectedRows[0].id, { method: 'GET' })
         .then(
-            function(res){
-               return res.json();
+            function(res) {
+                return res.json();
             }
         )
         .then(
-            function(res){
+            function(res) {
                 var pelicula = {
-                    titulo : res.title,
-                     descripcion : res.description,
-                     anio : res.year,
-                     duracion: res.runtime, 
-                     pais: res.country, 
-                     lenguaje: res.language,
-                     genero: res.genres,
-                     directores : res.directors, 
-                     guionistas: res.writers
-            }
-        page.evaluate(({pelicula}) => window.localStorage.setItem('movie', JSON.stringify(pelicula)),{pelicula});
-        })
+                    titulo: res.title,
+                    descripcion: res.description,
+                    anio: res.year,
+                    duracion: res.runtime,
+                    pais: res.country,
+                    lenguaje: res.language,
+                    genero: res.genres,
+                    directores: res.directors,
+                    guionistas: res.writers
+                }
+                page.evaluate(({ pelicula }) => window.localStorage.setItem('movie', JSON.stringify(pelicula)), { pelicula });
+            })
 
-    
-    await page.goto(baseURL+'/movie.html');
+
+    await page.goto(baseURL + '/movie.html');
 
     const titulo = await page.$('span#title');
-    const valueTitulo =  await page.evaluate(titulo => titulo.innerText,titulo);
+    const valueTitulo = await page.evaluate(titulo => titulo.innerText, titulo);
     const descripcion = await page.$('span#description');
-    const valueDescription =  await page.evaluate(descripcion => descripcion.innerText,descripcion);    
+    const valueDescription = await page.evaluate(descripcion => descripcion.innerText, descripcion);
     const anio = await page.$('span#year');
-    const valueAnio = await page.evaluate(anio => anio.innerText,anio);
+    const valueAnio = await page.evaluate(anio => anio.innerText, anio);
     const duracion = await page.$('span#runtime');
-    const valueDuracion = await page.evaluate(duracion => duracion.innerText,duracion);
+    const valueDuracion = await page.evaluate(duracion => duracion.innerText, duracion);
     const pais = await page.$('span#country');
-    const valuePais = await page.evaluate(pais => pais.innerText,pais);
+    const valuePais = await page.evaluate(pais => pais.innerText, pais);
     const lenguaje = await page.$('span#language');
-    const valueLenguaje = await page.evaluate(lenguaje => lenguaje.innerText,lenguaje);
+    const valueLenguaje = await page.evaluate(lenguaje => lenguaje.innerText, lenguaje);
     const genero = await page.$('span#genre');
-    const valueGenero =  await page.evaluate(genero => genero.innerText,genero);
+    const valueGenero = await page.evaluate(genero => genero.innerText, genero);
     const directores = await page.$('span#directors');
-    const valueDirectores =  await page.evaluate(directores => directores.innerText,directores);
+    const valueDirectores = await page.evaluate(directores => directores.innerText, directores);
     const guionistas = await page.$('span#writers');
-    const valueGuionistas =  await page.evaluate(guionistas => guionistas.innerText,guionistas);
+    const valueGuionistas = await page.evaluate(guionistas => guionistas.innerText, guionistas);
 
     expect(valueTitulo).toBe(movie.title);
     expect(valueDescription).toBe(movie.description);
@@ -208,7 +208,6 @@ test('Se debería poder ver el detalle de una película', async () => {
     expect(valueLenguaje).toBe(movie.language);
     expect(valueGenero).toBe(movie.genres.toString());
     expect(valueDirectores).toBe(movie.directors.toString());
-    expect(valueGuionistas).toBe(movie.writers.toString());    
+    expect(valueGuionistas).toBe(movie.writers.toString());
 
-}
-)
+})
