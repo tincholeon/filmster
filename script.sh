@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo HOLA MUNDO DESDE JENKINS
+echo 'HOLA MUNDO DESDE JENKINS'
